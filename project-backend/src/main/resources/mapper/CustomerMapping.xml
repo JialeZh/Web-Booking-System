@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cping.project.dao.CustomerDao">
+    <insert id="addCustomer" parameterType="com.cping.project.bean.Customer">
+        insert into customer
+        (customer_firstname,customer_lastname,phone_number,member_status)
+        value
+        (#{customer_firstname},#{customer_lastname},#{phone_number},#{member_status})
+    </insert>
+
+    <select id="getAllCustomer" resultType="com.cping.project.bean.Customer">
+        select * from customer
+    </select>
+
+
+    <select id="getUpdateCustomer" resultType="com.cping.project.bean.Customer">
+        select * from customer where customer_id = #{customer_id}
+    </select>
+
+    <update id="editCustomer">
+        update customer
+        <set>
+            <if test="customer_firstname != null">
+                customer_firstname=#{customer_firstname},
+            </if>
+            <if test="customer_lastname != null">
+                customer_lastname=#{customer_lastname},
+            </if>
+            <if test="phone_number != null">
+                phone_number=#{phone_number},
+            </if>
+            <if test="customer_lastname != null">
+                member_status=#{member_status},
+            </if>
+        </set>
+        where customer_id=#{customer_id}
+    </update>
+
+    <delete id="deleteCustomer">
+        delete from customer where customer_id = #{customer_id}
+    </delete>
+</mapper>

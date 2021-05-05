@@ -1,0 +1,13 @@
+# mysql
+spring:
+  datasource:
+    driverClassName:  com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://database-1.cbpvgqc2xtqy.us-east-2.rds.amazonaws.com:3306/schedule?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    username: team1b
+    password: codebrewers4375
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.cping.project.dao
+server:
+  port: 9000

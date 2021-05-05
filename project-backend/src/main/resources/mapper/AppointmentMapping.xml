@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cping.project.dao.AppointmentDao">
+    <insert id="addAppointment" parameterType="com.cping.project.bean.Appointment">
+        insert into appointment
+            (customer_firstname,customer_lastname,time,date,service_type,notes,phone_number)
+            value
+            (#{customer_firstname},#{customer_lastname},#{time},#{date},#{service_type},#{notes},#{phone_number})
+    </insert>
+
+    <select id="getAllAppointment" resultType="com.cping.project.bean.Appointment">
+        select * from appointment
+    </select>
+
+    <select id="getSearch" parameterType="com.cping.project.bean.vo.AppointmentVo" resultType="com.cping.project.bean.Appointment">
+        select * from appointment
+        <where>
+        <if test="begin !=null">
+            date &gt;= #{begin}
+        </if>
+        <if test="end != null">
+            and date &lt;= #{end}
+        </if>
+        </where>
+    </select>
+
+    <select id="getUpdateAppointment" resultType="com.cping.project.bean.Appointment">
+        select * from appointment where appointment_id = #{appointment_id}
+    </select>
+
+    <update id="editAppointment">
+        update appointment
+        <set>
+            <if test="customer_firstname != null">
+                customer_firstname=#{customer_firstname},
+            </if>
+            <if test="customer_lastname != null">
+                customer_lastname=#{customer_lastname},
+            </if>
+            <if test="time != null">
+                time=#{time},
+            </if>
+            <if test="date != null">
+                date=#{date},
+            </if>
+            <if test="service_type != null">
+                service_type=#{service_type},
+            </if>
+            <if test="notes != null">
+                notes=#{notes},
+            </if>
+            <if test="phone_number != null">
+                phone_number=#{phone_number}
+            </if>
+        </set>
+        where appointment_id=#{appointment_id}
+    </update>
+
+    <delete id="deleteAppointment">
+        delete from appointment where appointment_id = #{appointment_id}
+    </delete>
+</mapper>
