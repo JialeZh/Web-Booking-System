@@ -2,10 +2,15 @@
 
 ## Project Functions
 ```
--Add items to list with different identified categories available
--Update/Remove existing items with matching name and item code
--Set price, quantity, and discount % for any individual items
--Print receipt bill from calculating total price of all the items after discounts and taxes
+-Login for Admin, Staff and Customer
+-Admin users can manage Employees, Users, Customers, and Appointments
+-Staff users can only manage Customers and Appointments
+-Customers can only make Appointments
+-Appointments can be scheduled from 9:00AM to 8:00 PM on weekdays
+-Scheduled appointments can be viewed in a weekly calendar module
+-Appointments list can use filter to search for certain appointment dates
+-Create, Update, Edit, Delete for appointments, employees, users, and customers
+
 ```
 
 ## Starting back-end application
